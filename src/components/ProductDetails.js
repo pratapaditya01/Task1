@@ -1,6 +1,6 @@
 // ProductDetails.js
 import React from 'react';
-import { useLocation, useParams } from 'react-router-dom';
+import { useLocation, useParams, Link } from 'react-router-dom';
 import styled from 'styled-components';
 
 const DetailsWrapper = styled.section`
@@ -28,6 +28,14 @@ const ProductDetails = () => {
     <DetailsWrapper>
       <h2>Product Details for Product ID: {id}</h2>
       <ProductImage src={image} alt={`Product ${id}`} />
+      <div style={{ margin: '20px 0' }}>
+        <Link to="/form">
+          <button style={buttonStyle}>Buy  Now</button>
+        </Link>
+        <Link to='/RequestMoreDetails'>   
+        <button style={buttonStyle} >Request More Details</button>
+        </Link>
+        </div>
       <PurchaseOptions options={purchaseOptions} />
       <CustomerReviews reviews={reviews} />
       <Ingredients ingredients={ingredients} />
@@ -71,5 +79,15 @@ const Benefits = ({ benefits }) => (
     ))}
   </div>
 );
+
+const buttonStyle = {
+  padding: '10px 20px',
+  margin: '0 10px',
+  backgroundColor: '#007BFF',
+  color: '#FFFFFF',
+  border: 'none',
+  borderRadius: '5px',
+  cursor: 'pointer',
+};
 
 export default ProductDetails;
